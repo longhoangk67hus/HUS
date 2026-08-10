@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sinh Viên</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            background-color: whitesmoke;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .font_size_text {
+            font-size: 20px;
+            background-color: white
+        }
+
+        label {
+            display: inline-block;
+            width: auto;
+        }
+
+        input {
+            padding: 5px;
+            background-color: white
+        }
+
+        .border {
+            border: gray 1px solid;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 640px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid rgba(255, 255, 255, 0.77)
+        ;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quản Lý Sinh Viên</h1>
+    <div style="border: gainsboro 1px solid; padding: 15px; width: 600px; box-shadow: 1px 1px 1px 2px gainsboro; border-radius: 5px; background-color: white">
+        <div class="form-container" style="background-color: white">
+            <label for="studentName" class="font_size_text" style="padding-bottom: 5px;">Sinh Viên</label>
+            <input class="border" type="text" id="studentName" placeholder="Nhập tên sinh viên"
+                   style="margin-bottom: 10px;">
+
+            <label for="dob" class="font_size_text" style="padding-bottom: 5px">Ngày Sinh</label>
+            <input class="border" type="date" id="dob" style="margin-bottom: 10px">
+
+            <label for="subject" class="font_size_text" style="padding-bottom: 5px">Môn Học</label>
+            <input class="border" type="text" id="subject" placeholder="Nhập tên môn học" style="margin-bottom: 10px">
+
+            <label for="course" class="font_size_text" style="padding-bottom: 5px">Khóa</label>
+            <input class="border" type="text" id="course" placeholder="Nhập khóa học" style="margin-bottom: 10px">
+        </div>
+        <div style="background-color: white">
+            <button id="addOrUpdateBtn" onclick="addOrUpdateStudent()">Thêm</button>
+        </div>
+    </div>
+
+    <table id="studentTable">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Sinh Viên</th>
+            <th>Ngày Sinh</th>
+            <th>Môn Học</th>
+            <th>Khóa</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+<script src="script.js"></script>
+</body>
+</html>

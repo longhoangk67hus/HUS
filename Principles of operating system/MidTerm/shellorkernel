@@ -1,0 +1,8 @@
+nhận lệnh từ người dùng: shell
+nhận tín hiệu bàn phím gõ bởi người dùng: kernel
+hiển thị nội dung 1 tệp: shell
+đọc một khối đĩa: kernel
+chuyển đổi địa chỉ ảo sang địa chỉ thực: kernel
+hoán đổi trang nhớ ảo và thực: kernel
+tải một chương trình vào bộ nhớ: kernel
+quản lí các tiến trình: kernel and shell

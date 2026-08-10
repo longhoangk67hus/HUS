@@ -1,0 +1,9 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/ngoclong7204/Documents/Workspace/HUS/Principles of operating system/Week5/philosophers_deadlock'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _philosopher, symObjAddr: 0x0, symBinAddr: 0x100003B6C, symSize: 0x194 }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _chopstick, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x74, offset: 0x74, size: 0x8, addend: 0x0, symName: _philosopher, symObjAddr: 0x0, symBinAddr: 0x100003B6C, symSize: 0x194 }
+  - { offsetInCU: 0xAA, offset: 0xAA, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x194, symBinAddr: 0x100003D00, symSize: 0x150 }
+...
