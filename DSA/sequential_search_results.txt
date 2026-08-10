@@ -1,0 +1,4 @@
+Algorithm: Sequential Search, Array Size: 1000000, Execution Time: 12 milliseconds
+Algorithm: Sequential Search, Array Size: 10000000, Execution Time: 35 milliseconds
+Algorithm: Sequential Search, Array Size: 1000000, Execution Time: 14 milliseconds
+Algorithm: Sequential Search, Array Size: 10000000, Execution Time: 30 milliseconds

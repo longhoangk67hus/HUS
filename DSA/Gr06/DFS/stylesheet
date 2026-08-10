@@ -1,0 +1,82 @@
+node {
+	fill-color: black;
+	size: 30px;
+	size-mode: fit;
+}
+
+node.marked {
+	fill-color: orange;
+}
+
+node.visiting {
+	fill-color: red;
+}
+
+node.blue {
+	fill-color: blue;
+}
+
+node.green {
+	fill-color: green;
+}
+
+edge.visited {
+	fill-color: red;
+}
+
+
+edge.movable {
+	fill-color: green;
+}
+
+
+edge.default {
+	fill-color: black;
+}
+
+edge {
+	size: 3px;
+}
+
+node {
+	text-alignment: at-right;
+	text-color: #222;
+	text-background-mode: plain;
+	text-background-color: white;
+}
+
+node#B {
+	text-alignment: at-left;
+}
+
+node#C {
+	text-alignment: under;
+}
+
+graph {
+	padding: 50px;
+}
+
+node {
+	size-mode: fit;
+	shape: rounded-box;
+	fill-color: white;
+	stroke-mode: plain;
+	padding: 5px, 4px;
+}
+
+node {
+	text-alignment: under;
+	text-color: white;
+	text-style: bold;
+	text-background-mode: rounded-box;
+	text-background-color: #222C;
+	text-padding: 5px, 4px;
+	text-offset: 0px, 5px;
+}
+
+node#C {
+	text-alignment: above;
+	text-offset: 0px, -5px;
+}
+

@@ -1,0 +1,18 @@
+Combo 2 (bài 2 và bài 3)
+Bài 2:
+    2.1. ExpressionTree
+    + Sử dụng đệ quy theo 3 cách pre, in, post (mỗi cách là 1 phương thức riêng)
+    2.2. Biểu diễn cây nhị phân theo 3 cách ở trên
+    2.3. Calculator
+    - Sử dụng duyệt cây (pre-order traversal) để thực hiện tính toán trong cây biểu thức:
+        + Khi gặp một nút là toán tử và có hai nút con là số, class Calculator thực hiện tính toán
+         dựa trên toán tử và số tương ứng và cập nhật giá trị của nút đó.
+        + Nút con sau khi tính toán được loại bỏ để tạo thành một cây biểu thức mới.
+        + Tính toán tiếp tục cho đến khi cây chỉ còn một nút lá, chứa kết quả cuối cùng của biểu thức.
+    * Nhận xét: Bị giới hạn trong việc xử lý biểu thức lớn: Trong trường hợp biểu thức rất lớn, việc xử lý biểu thức có thể gây ra sự chậm trễ hoặc vượt quá giới hạn về đệ quy.
+Bài 3: Xây dựng Binary Tree từ PostFix Expression
+Input: Biểu thức số học dạng infix
+Output: Binary Tree
+Thuật toán: 
+	+ Thuật toán hỗ trợ: Chuyển từ dạng trung tố sang dạng hậu tố và từ trung tố sang tiền tố rồi dựng cây nhị phân
+   

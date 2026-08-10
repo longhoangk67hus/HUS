@@ -1,0 +1,21 @@
+Gói bài làm: Combo 1
+
+Bài 1:
+UnsortedLinkedPriorityQueue: Sử dụng cấu trúc liên kết với 1 dãy không được sắp xếp theo thứ tự từ trước
+SortedLinkedPriorityQueue: Sử dụng cấu trúc liên kết với dãy đã được sắp xếp từ trước
+Cả 2 đều sử dụng iterator để truy cập vào phần tử tiếp theo
+
+UnsortedArrayPriorityQueue: Sử dụng mảng với 1 dãy không được sắp xếp trước
+SortedArrayPriorityQueue: Sử dụng mảng với dãy được sắp xếp từ trước
+
+-Nhận xét: Đã cài được PriorityQueue dưới 4 dạng
+-Cách dùng:
++ queue.insert(key, value) là add thêm element vào queue
++ queue.removeMin() xoá và trả về element có key(Độ ưu tiên) thấp nhất
+Bài 2:
+- MinHeap cài đặt bằng mảng với root(min) ở index 1
+- insert 1 element thì upHeap(vun lên)
+- removeMin thì downHeap(vun xuống)
+Bài 3:
+- HeapSort trả ra 1 mảng các phần tử theo thứ tự tăng dần bằng cách removeMin dần từ MinHeap cho trước
+- Sử dụng miliTime() để xem thời gian thực hiện mỗi thuật toán sort

@@ -1,0 +1,7 @@
+chương trình sủ dụng class graph của thư viện GraphStream nên cần phải import vào project trước khi chạy
+Store là class chứa các graph đã đc insert các cạnh và các đỉnh
+code chạy ở hàm main của file DFS và Visualize 
+    + code chạy có 2 phần: duyệt đồ thị thường và check đồ thị 2 phía
+    + phần menu (file Remote) chưa hoàn thiện (menu hiện tại phải dùng terminal)
+    + visualize sử dụng graph tự cài đặt được trong hw8
+    + DFS sử dụng class Graph có sẵn của GraphStream
