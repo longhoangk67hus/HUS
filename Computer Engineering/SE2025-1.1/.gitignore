@@ -1,0 +1,143 @@
+# .gitignore cho SE2025_Cinema_Node
+
+# ================================
+# Environment Variables & Secrets
+# ================================
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.staging
+*.env
+
+# ================================
+# Secrets & Credentials
+# ================================
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+credentials.json
+serviceAccountKey.json
+config/secrets.json
+
+# SSH Keys - CRITICAL: Never commit private keys
+github_actions_deploy_key
+github_actions_deploy_key.pub
+se2025_1_1_pk
+se2025_1_1_pk.pub
+*_deploy_key
+*_deploy_key.pub
+
+# ================================
+# Node.js
+# ================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+
+# ================================
+# Build & Distribution
+# ================================
+dist/
+build/
+*.tsbuildinfo
+*.log
+logs/
+
+# ================================
+# IDE & Editors
+# ================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ================================
+# OS Files
+# ================================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.bak
+
+# ================================
+# Testing & Coverage
+# ================================
+coverage/
+*.lcov
+.nyc_output/
+test-results/
+
+# ================================
+# Database
+# ================================
+*.sql.backup
+*.db
+*.sqlite
+*.sqlite3
+
+# ================================
+# Temporary Files
+# ================================
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+
+# ================================
+# PM2
+# ================================
+.pm2/
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ================================
+# Uploads (nếu có)
+# ================================
+uploads/
+public/uploads/
+
+# ================================
+# Backup files
+# ================================
+*.backup
+*.old
+*.orig
+
+# ================================
+# Redis Database Backup
+# ================================
+dump.rdb
+*.rdb
+appendonly.aof
+
+# ================================
+# SSH Keys (CRITICAL!)
+# ================================
+*_pk
+*_pk.pub
+se2025_1_1_pk
+se2025_1_1_pk.pub
+github_actions_deploy_key
+github_actions_deploy_key.pub
+
+# ================================
+# Documentation & Reports
+# ================================
+COMPARISON_REPORT.md
+migrate_*.sql

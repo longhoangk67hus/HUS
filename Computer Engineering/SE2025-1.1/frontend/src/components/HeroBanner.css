@@ -1,0 +1,251 @@
+.hero-banner {
+  position: relative;
+  height: 28rem;
+  background: linear-gradient(135deg, #0f1b45, #1a2f5a);
+  overflow: hidden;
+  margin: 0 0 2rem 0;
+  /* push the hero down so fixed header doesn't cover it */
+  margin-top: 72px;
+  z-index: 0;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  filter: contrast(1.05) saturate(1.05);
+  transform: scale(1.01);
+  transition: transform 0.4s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* keep left side dark for text, but allow poster to show through on the right */
+  background: linear-gradient(to right, rgba(15,27,69,0.95) 0%, rgba(15,27,69,0.7) 35%, rgba(15,27,69,0.25) 65%, rgba(15,27,69,0.08) 100%);
+  pointer-events: none;
+}
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  transform: scale(1.02);
+}
+
+.banner-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
+}
+
+.hero-date {
+  font-size: 1.25rem;
+  color: #d1d5db;
+  margin: 0 0 2rem 0;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero-button {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+}
+
+.hero-button:hover {
+  background-color: #357abd;
+}
+
+/* Manual nav removed — banner auto-rotates every 30s */
+
+/* MOBILE: max-width 480px */
+@media (max-width: 480px) {
+  .hero-banner {
+    height: 16rem;
+    margin-top: 60px;
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-date {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* SMALL MOBILE: 481px - 640px */
+@media (min-width: 481px) and (max-width: 640px) {
+  .hero-banner {
+    height: 18rem;
+    margin-top: 64px;
+  }
+
+  .hero-content {
+    padding: 0 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-date {
+    font-size: 0.95rem;
+  }
+
+  .hero-button {
+    padding: 0.6rem 1.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* TABLET: 641px - 768px */
+@media (min-width: 641px) and (max-width: 768px) {
+  .hero-banner {
+    height: 22rem;
+  }
+
+  .hero-content {
+    padding: 0 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-date {
+    font-size: 1.05rem;
+  }
+
+  .hero-button {
+    padding: 0.65rem 1.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* TABLET: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-banner {
+    height: 26rem;
+  }
+
+  .hero-content {
+    padding: 0 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-date {
+    font-size: 1.15rem;
+  }
+
+  .hero-button {
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* DESKTOP: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .hero-banner {
+    height: 28rem;
+  }
+
+  .hero-content {
+    padding: 0 3rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-date {
+    font-size: 1.2rem;
+  }
+
+  .hero-button {
+    padding: 0.75rem 2.25rem;
+    font-size: 1rem;
+  }
+}
+
+/* LARGE DESKTOP: 1441px+ */
+@media (min-width: 1441px) {
+  .hero-banner {
+    height: 32rem;
+  }
+
+  .hero-content {
+    padding: 0 4rem;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .hero-date {
+    font-size: 1.3rem;
+  }
+
+  .hero-button {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.05rem;
+  }
+}

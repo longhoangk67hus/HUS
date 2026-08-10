@@ -1,0 +1,519 @@
+/* Login and Signup page styles - matching Home theme */
+.login-page {
+  background-color: #ffffff;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Back to home button */
+.back-home-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #003d7a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-home-btn { z-index: 1100; }
+
+/* Strong page-scoped placement: keep the button fixed above the card and fully visible */
+.login-page > .back-home-btn {
+  position: fixed;
+  top: calc(72px + 8px);
+  left: 12px;
+  z-index: 2000;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.12);
+  background-color: #003d7a;
+}
+
+/* On narrow screens center the back button above the card to avoid overlapping */
+@media (max-width: 480px) {
+  .login-page > .back-home-btn {
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(72px + 6px);
+    padding: 8px 14px;
+    margin-left:60px;
+  }
+
+  /* add a little top offset to the card so the button sits clearly above it */
+  .login-page .login-card { margin-top: 8px; }
+}
+
+.back-home-btn:hover {
+  background-color: #002855;
+  transform: translateX(-4px);
+}
+
+.login-card {
+  background-color: #003d7a;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  width: 100%;
+  max-width: min(480px, 96%);
+  border: 1px solid #003d7a;
+}
+
+.login-card h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 32px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Error message */
+.error-message {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  border-left: 4px solid #dc2626;
+  font-size: 14px;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-groupp {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-groupp label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-groupp input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #334155;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.form-groupp input:focus {
+  outline: none;
+  border-color: #003d7a;
+  background-color: #3d444e;
+  box-shadow: 0 0 0 3px rgba(0, 61, 122, 0.1);
+}
+
+.form-groupp input::placeholder {
+  color: #94a3b8;
+}
+
+/* Password input wrapper with toggle button */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  background-color: #334155;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.password-input-wrapper input:focus {
+  outline: none;
+  border-color: #003d7a;
+  background-color: #3d444e;
+  box-shadow: 0 0 0 3px rgba(0, 61, 122, 0.1);
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-password-btn:hover {
+  opacity: 0.8;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  background-color: #4b9ef1;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #002855;
+  box-shadow: 0 4px 12px rgba(0, 61, 122, 0.3);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Toggle section */
+.toggle-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #475569;
+  text-align: center;
+}
+
+.toggle-section p {
+  color: #9ca3af;
+  font-size: 14px;
+  margin: 0;
+}
+
+.toggle-btn {
+  background-color: #4b9ef1; /* nền xanh */
+  color: white;              /* chữ trắng */
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+
+/* MOBILE: max-width 480px */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 24px 12px;
+    margin-top: 56px;
+  }
+
+  .back-home-btn {
+    top: 8px;
+    left: 8px;
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .login-card {
+    padding: 16px;
+    border-radius: 6px;
+    max-width: 100%;
+  }
+
+  /* Keep the back button visible and outside the card on small screens */
+  .login-page .back-home-btn {
+    position: fixed;
+    top: calc(var(--header-height,72px) + 8px);
+    left: 12px;
+    z-index: 1300;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+
+  .login-page .login-card { z-index: 1; position: relative; }
+
+  .login-card h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .login-form {
+    gap: 16px;
+  }
+
+  .form-groupp label {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .form-groupp input,
+  .password-input-wrapper input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .error-message {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .toggle-section {
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+
+  .toggle-section p {
+    font-size: 12px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+  .login-container { padding: 12px 10px; margin-top: 56px }
+  .login-card { padding: 12px; border-radius: 6px }
+  .login-card h2 { font-size: 18px; margin-bottom: 14px }
+  .form-groupp input,
+  .password-input-wrapper input { padding: 8px 10px; font-size: 12px }
+  .submit-btn { padding: 9px 12px; font-size: 12px }
+  .back-home-btn { padding: 6px 10px; font-size: 11px }
+}
+
+/* TABLET: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .login-container {
+    padding: 32px 14px;
+    margin-top: 64px;
+  }
+
+  .back-home-btn {
+    top: 12px;
+    left: 12px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .login-card {
+    padding: 24px;
+    max-width: 420px;
+  }
+
+  .login-card h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .login-form {
+    gap: 18px;
+  }
+
+  .form-groupp input,
+  .password-input-wrapper input {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    padding: 11px 16px;
+    font-size: 14px;
+  }
+}
+
+/* TABLET: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .login-container {
+    padding: 40px 16px;
+    margin-top: 72px;
+  }
+
+  .back-home-btn {
+    top: 16px;
+    left: 16px;
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+
+  .login-card {
+    padding: 32px;
+    max-width: 460px;
+  }
+
+  .login-card h2 {
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .login-form {
+    gap: 20px;
+  }
+}
+
+/* DESKTOP: 1025px+ */
+@media (min-width: 1025px) {
+  .login-container {
+    padding: 48px 16px;
+    margin-top: 80px;
+  }
+
+  .back-home-btn {
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .login-card {
+    padding: 40px;
+    max-width: 480px;
+  }
+
+  .login-card h2 {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .login-form {
+    gap: 20px;
+  }
+}
+
+/* Responsive typography + control sizing (clamp-based) */
+.login-card h2 {
+
+  font-size: clamp(18px, 2.5vw + 10px, 28px);
+}
+
+.form-groupp input,
+.password-input-wrapper input {
+  font-size: clamp(12px, 0.8vw + 10px, 14px);
+  padding: clamp(8px, 0.8vw + 8px, 12px) clamp(10px, 1.2vw + 8px, 16px);
+}
+
+.submit-btn {
+  font-size: clamp(13px, 1vw + 10px, 15px);
+  padding: clamp(9px, 0.6vw + 9px, 12px) clamp(12px, 1vw + 12px, 16px);
+}
+
+/* Reduce spacing on very small devices */
+@media (max-width: 360px) {
+  .login-card { padding: 10px }
+  .login-card h2 { font-size: 16px }
+  .form-groupp label { font-size: 11px }
+  .form-groupp input, .password-input-wrapper input { font-size: 12px; padding: 8px 10px }
+  .submit-btn { font-size: 12px; padding: 8px 10px }
+  .toggle-section { margin-top: 12px }
+}
+
+/* Slightly increase hit area on tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .form-groupp input, .password-input-wrapper input { padding: 12px 14px }
+  .submit-btn { padding: 12px 16px }
+}
+
+/* Strong, page-scoped small-screen overrides to ensure responsiveness */
+@media (max-width: 480px) {
+
+  .login-page .login-card h2 {
+    font-size: 20px !important;
+    margin-bottom: 18px !important;
+    text-align: center;
+  }
+
+  .login-page .form-groupp input,
+  .login-page .password-input-wrapper input {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+  }
+
+  .login-page .submit-btn {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+  }
+}
+
+/* Ensure login card doesn't get covered by fixed header and stays compact */
+.login-page .login-container {
+  margin-top: 84px !important; /* header is 72px; give extra breathing room */
+  padding-top: 0 !important;
+  box-sizing: border-box;
+}
+
+.login-page .login-card {
+  width: min(420px, 92%) !important;
+  max-width: 420px !important;
+  padding: 14px !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  margin: 60px;
+}
+
+.login-page .login-card h2 {
+  font-size: 18px !important;
+  margin-bottom: 14px !important;
+}
+
+.login-page .form-groupp input,
+.login-page .password-input-wrapper input {
+  font-size: 13px !important;
+  padding: 9px 10px !important;
+}
+
+.login-page .submit-btn {
+  font-size: 13px !important;
+  padding: 9px 10px !important;
+}
+
+@media (max-width: 480px) {
+  .login-page .login-container { margin-top: 72px !important;  }
+  .login-page .login-card { padding: 12px !important; }
+  .login-page .login-card h2 { font-size: 17px !important; }
+}
+
+@media (max-width: 360px) {
+  .login-page .login-container { margin-top: 64px !important; }
+  .login-page .login-card { padding: 10px !important; }
+  .login-page .login-card h2 { font-size: 16px !important; }
+}

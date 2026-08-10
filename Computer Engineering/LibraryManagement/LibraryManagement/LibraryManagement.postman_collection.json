@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "80de1e24-d99b-4cf3-b62a-1a484d1e5dff",
+		"name": "LibraryManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19551566"
+	},
+	"item": [
+		{
+			"name": "Đăng ký",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"UserName\": \"long\",\r\n  \"Password\": \"123456\",\r\n  \"FullName\": \"Long Mike\",\r\n  \"PhoneNumber\": \"0329000342\",\r\n  \"Email\": \"user@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5021/api/v1/Authens/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5021",
+					"path": [
+						"api",
+						"v1",
+						"Authens",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tìm kiếm sách, paging",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PageSize\": 25,\r\n    \"PageIndex\": 1,\r\n    \"Filter\": \"[['CategoryFilter', 'CONTAINS', 'trinh thám'], 'OR', ['AuthorFilter', 'CONTAINS', 'ánh'], 'OR', ['Title', 'CONTAINS', 'hoa'\",\r\n    \"CustomParams\": {\r\n        \"FilterByDetails\": true\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5021/api/v1/Books/paging",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5021",
+					"path": [
+						"api",
+						"v1",
+						"Books",
+						"paging"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Thêm danh mục",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3ODIxNTdkNy03NGE4LTQ2YzUtYTAwZC1mMTE5MDIwOWM1NDciLCJFbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJSb2xlcyI6IlVTRVIsQURNSU4iLCJleHAiOjE3NTg1MTUwODZ9.YA1QfBgUfmSLNax_d6Py8SiNp5_ZQBa1UA3G38iRERM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Name\": \"One without sacrificing individual privacy 6.\",\r\n  \"State\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5021/api/v1/Categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5021",
+					"path": [
+						"api",
+						"v1",
+						"Categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sửa danh mục",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3ODIxNTdkNy03NGE4LTQ2YzUtYTAwZC1mMTE5MDIwOWM1NDciLCJFbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJSb2xlcyI6IlVTRVIsQURNSU4iLCJleHAiOjE3NTg1MTUwODZ9.YA1QfBgUfmSLNax_d6Py8SiNp5_ZQBa1UA3G38iRERM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Name\": \"One of the most essential qualities of\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5021/api/v1/Categories/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5021",
+					"path": [
+						"api",
+						"v1",
+						"Categories",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mượn sách",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3ODIxNTdkNy03NGE4LTQ2YzUtYTAwZC1mMTE5MDIwOWM1NDciLCJFbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJSb2xlcyI6IlVTRVIsQURNSU4iLCJleHAiOjE3NTg1MTUwODZ9.YA1QfBgUfmSLNax_d6Py8SiNp5_ZQBa1UA3G38iRERM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"BookID\": 1,\n  \"Quantity\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5021/api/v1/BorrowingRecords/borrowing-record",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5021",
+					"path": [
+						"api",
+						"v1",
+						"BorrowingRecords",
+						"borrowing-record"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trả sách",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3ODIxNTdkNy03NGE4LTQ2YzUtYTAwZC1mMTE5MDIwOWM1NDciLCJFbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJSb2xlcyI6IlVTRVIsQURNSU4iLCJleHAiOjE3NTg1MTUwODZ9.YA1QfBgUfmSLNax_d6Py8SiNp5_ZQBa1UA3G38iRERM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"BorrowingRequestId\": 1,\n  \"Stauts\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5021/api/v1/BorrowingRecords/return",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5021",
+					"path": [
+						"api",
+						"v1",
+						"BorrowingRecords",
+						"return"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Xóa danh mục",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3ODIxNTdkNy03NGE4LTQ2YzUtYTAwZC1mMTE5MDIwOWM1NDciLCJFbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJSb2xlcyI6IlVTRVIsQURNSU4iLCJleHAiOjE3NTg1MTUwODZ9.YA1QfBgUfmSLNax_d6Py8SiNp5_ZQBa1UA3G38iRERM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"ID\": 11}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5021/api/v1/Categories/bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5021",
+					"path": [
+						"api",
+						"v1",
+						"Categories",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lấy danh sách người mượn trả",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI3ODIxNTdkNy03NGE4LTQ2YzUtYTAwZC1mMTE5MDIwOWM1NDciLCJFbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJSb2xlcyI6IkFETUlOIiwiZXhwIjoxNzU4NTI5ODYyfQ.9v_xKjqIuuAwzVhbSNYLNROicW_oiddNZ-EkmrHgEKo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"PageSize\": 10,\n  \"PageIndex\": 1\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5021/api/v1/BorrowingRecords/paging",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5021",
+					"path": [
+						"api",
+						"v1",
+						"BorrowingRecords",
+						"paging"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

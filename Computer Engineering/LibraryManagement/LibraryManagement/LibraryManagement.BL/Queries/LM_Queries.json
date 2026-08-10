@@ -1,0 +1,3 @@
+{
+  "BookBL_GetFullDetailsByID": "SELECT * FROM `Book` WHERE ID = @BookID;SELECT A.ID, A.Name FROM `Author` A INNER JOIN `Book_Author` BA ON A.ID = BA.AuthorID WHERE BA.BookID = @BookID; SELECT C.ID, C.Name FROM `Category` C INNER JOIN `Book_Category` BC ON C.ID = BC.CategoryID WHERE BC.BookID = @BookID;"
+}

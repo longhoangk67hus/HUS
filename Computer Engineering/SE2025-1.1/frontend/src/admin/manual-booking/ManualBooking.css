@@ -1,0 +1,763 @@
+:root {
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-secondary: #64748b;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f8fafc;
+  --color-bg-light: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-booking-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.admin-booking-container {
+  flex: 1;
+  padding: 32px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f0f4f8 100%);
+}
+
+.admin-booking-container.no-sidebar {
+  margin-left: 0;
+}
+
+.admin-booking-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+.manual-booking-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.manual-booking-title {
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--color-text);
+  letter-spacing: -0.5px;
+}
+
+.manual-booking-steps {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 16px;
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+}
+
+.mb-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.mb-step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-light);
+  color: var(--color-text-muted);
+  border: 2px solid var(--color-border);
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.mb-step.active .mb-step-circle {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.mb-step.completed .mb-step-circle {
+  background: var(--color-success);
+  color: white;
+  border-color: var(--color-success);
+}
+
+.mb-step-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.mb-step:not(:last-child)::after {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--color-border);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+
+/* Steps */
+.admin-booking-step {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 24px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-booking-step h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.admin-booking-selected-info {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-primary);
+}
+
+.admin-booking-selected-info p {
+  font-size: 14px;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.admin-booking-selected-info strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Loading & Empty States */
+.admin-booking-loading {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.admin-booking-empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.admin-booking-error-state {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.admin-booking-error-msg {
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Movies Grid */
+.admin-booking-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-booking-movie-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-light);
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-booking-movie-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.admin-booking-movie-card.selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), var(--shadow-lg);
+}
+
+.admin-booking-movie-poster {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-booking-movie-info {
+  padding: 16px;
+}
+
+.admin-booking-movie-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Date Picker */
+.admin-booking-date-picker-container {
+  margin-bottom: 24px;
+}
+
+.admin-booking-date-picker-container label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-booking-date-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background: var(--color-bg-light);
+  font-size: 14px;
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+.admin-booking-date-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-bg);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* Theaters Grid */
+.admin-booking-theaters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-booking-theater-card {
+  padding: 16px;
+  background: var(--color-bg-light);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.admin-booking-theater-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  background:#6191f9;
+}
+
+.admin-booking-theater-card.selected {
+  border-color: var(--color-primary);
+  background: #6191f9;
+  box-shadow: 0 0 0 3px #6191f9;
+}
+
+.admin-booking-theater-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.admin-booking-theater-location {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.admin-booking-theater-city {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+/* Showtimes */
+.admin-booking-showtimes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.admin-booking-showtime-btn {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-light);
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: var(--transition);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.admin-booking-showtime-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background:#6191f9;
+}
+
+.admin-booking-showtime-btn.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-booking-showtime-btn .time {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.admin-booking-showtime-btn .info {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* Seats Selection */
+.admin-booking-seats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(36px, 1fr));
+  gap: 8px;
+  padding: 16px;
+  background: var(--color-bg-light);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  margin-bottom: 20px;
+}
+
+.admin-booking-seat {
+  padding: 8px;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: var(--transition);
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-booking-seat:hover:not(.booked) {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-booking-seat.booked {
+  background: var(--color-bg-light);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  border-color: var(--color-border);
+}
+
+.admin-booking-seat.selected {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Forms */
+.admin-booking-form-group {
+  margin-bottom: 20px;
+}
+
+.admin-booking-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-booking-form-group input,
+.admin-booking-form-group select,
+.admin-booking-form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background: var(--color-bg-light);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+.admin-booking-form-group input:focus,
+.admin-booking-form-group select:focus,
+.admin-booking-form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-bg);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-booking-form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Confirmation */
+.admin-booking-confirmation-card {
+  background: var(--color-bg-light);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.admin-booking-card-section {
+  padding: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-booking-card-section:last-child {
+  border-bottom: none;
+}
+
+.admin-booking-card-section h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-booking-card-section p {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.admin-booking-selected-seats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-booking-seat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-booking-seat-count {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-top: 12px;
+}
+
+.admin-booking-price-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-top: 2px solid var(--color-border);
+}
+
+.admin-booking-total-price {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+/* Actions */
+.admin-booking-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Buttons */
+.admin-booking-btn {
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.admin-booking-btn:hover {
+  border-color: var(--color-border);
+  background: var(--color-bg-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-booking-btn:active {
+  transform: translateY(0);
+}
+
+.admin-booking-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-booking-btn-primary {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.admin-booking-btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1), var(--shadow-md);
+}
+
+.admin-booking-btn-secondary {
+  background: var(--color-bg-light);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.admin-booking-btn-secondary:hover:not(:disabled) {
+  background: var(--color-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Payment Methods Styling */
+.admin-booking-payment-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+  padding: 16px;
+  background: var(--color-bg-light);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.admin-booking-payment-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.admin-booking-payment-option:hover {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-bg) 0%, rgba(37, 99, 235, 0.02) 100%);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.admin-booking-payment-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.admin-booking-payment-option input[type="radio"]:checked + .admin-booking-payment-icon + .admin-booking-payment-content,
+.admin-booking-payment-option:has(input[type="radio"]:checked) {
+  color: var(--color-primary);
+}
+
+.admin-booking-payment-option:has(input[type="radio"]:checked) {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0.02) 100%);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1), var(--shadow-md);
+}
+
+.admin-booking-payment-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.admin-booking-payment-content {
+  flex: 1;
+}
+
+.admin-booking-payment-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.admin-booking-payment-description {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.admin-booking-payment-total {
+  padding: 20px 24px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
+  border-radius: var(--radius-lg);
+  border-left: 6px solid var(--color-success);
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+  margin: 24px 0;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.admin-booking-payment-total strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.admin-booking-payment-amount {
+  color: var(--color-success);
+  font-weight: 800;
+  font-size: 24px;
+  margin-left: 12px;
+  letter-spacing: -0.5px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .admin-booking-container {
+    padding: 24px;
+  }
+
+  .admin-booking-movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .admin-booking-theaters-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-booking-container {
+    padding: 16px;
+  }
+
+  .admin-booking-step {
+    padding: 16px;
+  }
+
+  .admin-booking-step h2 {
+    font-size: 18px;
+  }
+
+  .admin-booking-movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .admin-booking-theaters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-booking-actions {
+    flex-direction: column-reverse;
+  }
+
+  .admin-booking-btn {
+    width: 100%;
+  }
+}
+

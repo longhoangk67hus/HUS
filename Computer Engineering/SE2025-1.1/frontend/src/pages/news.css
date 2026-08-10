@@ -1,0 +1,506 @@
+/* Styles copied from Home page to use for News page */
+.news-page {
+  background-color: white;
+  min-height: 100vh;
+  color: #4a90e2; /* primary text color */
+  display: flex;
+  flex-direction: column;
+}
+
+.news-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px 16px;
+  flex: 1;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.news-section {
+  margin-bottom: 64px;
+  animation: fadeIn 0.6s ease-in;
+}
+/* Booking history grid and card styles */
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.history-card {
+  background: linear-gradient(180deg, #003d7a, #002a57);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.history-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.history-row strong{color:rgba(255,255,255,0.95);min-width:110px;display:inline-block}
+.history-row .value{color:#ffffff;font-weight:700}
+
+.history-card .movie-title{font-size:16px;font-weight:700;color:#ffffff;margin-bottom:4px}
+.history-card .meta{font-size:13px;color:rgba(209,232,255,0.9)}
+
+/* Hover emphasis: lift card and highlight title/showtime */
+.history-card .movie-title,
+.history-card .meta {
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.history-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+.history-card:hover .movie-title {
+  color: #ffd54f; /* warm highlight for title */
+  transform: translateY(-2px);
+}
+.history-card:hover .meta {
+  color: rgba(255,235,205,0.95); /* lighter warm tone for meta/showtime */
+}
+
+.price-badge{margin-left:auto;background:rgba(255,255,255,0.12);color:#ffffff;padding:6px 10px;border-radius:999px;font-weight:700}
+
+.status-badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px;color:#ffffff;border:1px solid rgba(255,255,255,0.06)}
+.status-badge.Pending{background:rgba(255,255,255,0.06);color:#fff}
+.status-badge.Confirmed{background:rgba(255,255,255,0.06);color:#fff}
+.status-badge.Cancelled{background:rgba(255,255,255,0.06);color:#fff}
+
+
+/* Booking history grid and card styles */
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.history-card {
+  background: linear-gradient(180deg, #003d7a, #002a57);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.history-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.history-row strong{color:rgba(255,255,255,0.95);min-width:110px;display:inline-block}
+.history-row .value{color:#ffffff;font-weight:700}
+
+.history-card .movie-title{font-size:16px;font-weight:700;color:#ffffff;margin-bottom:4px}
+.history-card .meta{font-size:13px;color:rgba(209,232,255,0.9)}
+
+/* Hover emphasis: lift card and highlight title/showtime */
+.history-card .movie-title,
+.history-card .meta {
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.history-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+.history-card:hover .movie-title {
+  color: #ffd54f; /* warm highlight for title */
+  transform: translateY(-2px);
+}
+.history-card:hover .meta {
+  color: rgba(255,235,205,0.95); /* lighter warm tone for meta/showtime */
+}
+
+.price-badge{margin-left:auto;background:rgba(255,255,255,0.12);color:#ffffff;padding:6px 10px;border-radius:999px;font-weight:700}
+
+.status-badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px;color:#ffffff;border:1px solid rgba(255,255,255,0.06)}
+.status-badge.Pending{background:rgba(255,255,255,0.06);color:#fff}
+.status-badge.Confirmed{background:rgba(255,255,255,0.06);color:#fff}
+.status-badge.Cancelled{background:rgba(255,255,255,0.06);color:#fff}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 0 1rem 8px;
+  border-bottom: 2px solid rgba(0, 61, 122, 0.3);
+  transition: all 0.3s ease;
+}
+
+.section-header:hover {
+  border-bottom-color: #4a90e2;
+  padding-left: 1.5rem;
+}
+
+.section-header h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff; /* chữ màu trắng */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid #003d7a; /* viền màu 003d7a */
+  border-radius: 6px;
+  background: #003d7a; /* nền cũng 003d7a */
+  margin-bottom: 12px !important;
+}
+
+
+.view-all {
+  background-color: transparent;
+  color: #4a90e2;
+  border: 2px solid #4a90e2;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.view-all:hover {
+  background-color: #003d7a;
+  color: white;
+}
+
+.loading {
+  text-align: center;
+  padding: 48px;
+  font-size: 1.2rem;
+  color: #4a90e2;
+}
+
+/* Empty state when user has no bookings */
+.empty {
+  color: #94a3b8; /* gray */
+  text-align: center;
+  padding: 48px 16px;
+  font-size: 1.1rem;
+}
+
+.text-title {
+  border: 3px solid #003d7a;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #003d7a;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.text-title:hover {
+  background-color: #003d7a;
+  transform: translateX(4px);
+}
+
+/* News grid and cards */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.news-card {
+  background-color: #1a2f5a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.news-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: 1.5rem;
+}
+
+.news-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.news-date {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+.news-description {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.read-more-btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.read-more-btn:hover {
+  background-color: #357abd;
+}
+
+/* MOBILE: max-width 480px */
+@media (max-width: 480px) {
+  .news-container {
+    margin-top: 56px;
+    padding: 16px 12px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .history-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .section-header {
+    border-bottom: none;
+    padding: 0;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 20px;
+  }
+
+  .section-header h2 {
+    font-size: 14px;
+    color: #4a90e2;
+  }
+
+  .news-card,
+  .history-card {
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+
+  .news-card-image {
+    height: 140px;
+  }
+
+  .news-card-title {
+    font-size: 13px;
+  }
+
+  .text-title {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .price-section {
+    margin-bottom: 24px;
+  }
+}
+
+/* TABLET: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .news-container {
+    margin-top: 64px;
+    padding: 24px 14px;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .history-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+
+  .section-header {
+    padding: 10px 0;
+    margin-bottom: 24px;
+  }
+
+  .section-header h2 {
+    font-size: 16px;
+  }
+
+  .news-card,
+  .history-card {
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .news-card-image {
+    height: 160px;
+  }
+
+  .news-card-title {
+    font-size: 14px;
+  }
+
+  .text-title {
+    font-size: 14px;
+    padding: 5px 12px;
+  }
+
+  .price-section {
+    margin-bottom: 36px;
+  }
+}
+
+/* TABLET: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .news-container {
+    margin-top: 72px;
+    padding: 32px 16px;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .history-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .section-header {
+    padding: 12px 1rem;
+    margin-bottom: 28px;
+  }
+
+  .section-header h2 {
+    font-size: 18px;
+  }
+
+  .news-card,
+  .history-card {
+    border-radius: 10px;
+    padding: 15px 18px;
+  }
+
+  .news-card-image {
+    height: 180px;
+  }
+
+  .news-card-title {
+    font-size: 15px;
+  }
+
+  .text-title {
+    font-size: 15px;
+    padding: 6px 14px;
+  }
+
+  .price-section {
+    margin-bottom: 48px;
+  }
+}
+
+/* DESKTOP: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .news-container {
+    margin-top: 80px;
+    padding: 40px 16px;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .history-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .section-header {
+    padding: 14px 1rem;
+    margin-bottom: 32px;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .news-card,
+  .history-card {
+    padding: 16px 18px;
+  }
+
+  .news-card-title {
+    font-size: 16px;
+  }
+
+  .price-section {
+    margin-bottom: 56px;
+  }
+}
+
+/* LARGE DESKTOP: 1441px+ */
+@media (min-width: 1441px) {
+  .news-container {
+    margin-top: 80px;
+    padding: 48px 20px;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .history-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .section-header {
+    padding: 16px 1.5rem;
+    margin-bottom: 36px;
+  }
+
+  .section-header h2 {
+    font-size: 24px;
+  }
+
+  .price-section {
+    margin-bottom: 64px;
+  }
+}

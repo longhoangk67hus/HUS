@@ -1,0 +1,217 @@
+/* phần trắng phía trên header
+.header-top-space {
+	background-color: white;
+	height: 10px;
+	width: 100%;
+} */
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 72px; /* explicit height so content below can offset */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #0e365f;
+	color: white;
+	padding: 0 28px; /* vertical centering handled by height */
+	z-index: 999;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	margin: 0;
+	overflow: visible; /* allow suggestion dropdown to show outside header */
+}
+
+.logo {
+	font-size: 28px;
+	font-weight: 800;
+	color: #ffffff;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  gap: 25px;
+  margin-left: 40px;
+}
+
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* khi click (active) */
+/* khi click (active) */
+.nav a.active {
+  color: #003d7a;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* hover khi chưa click */
+.nav a:hover {
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Ô tìm kiếm */
+.search-form {
+	display: flex;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.08);
+	border-radius: 22px;
+	overflow: hidden;
+	height: 36px;
+	position: relative;
+	--search-width: 220px;
+}
+
+
+/* Auth buttons */
+.auth-buttons {
+	display: flex;
+	gap: 10px;
+}
+
+.login-btn,
+.signup-btn {
+	background: transparent;
+	color: white;
+	padding: 6px 12px;
+	border-radius: 18px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background 0.18s ease, color 0.18s ease;
+	text-decoration: none;
+}
+
+.login-btn:hover,
+.signup-btn:hover {
+	background: white;
+	color: #003d7a;
+}
+
+/* user greeting + dropdown */
+.auth-user {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+.greeting-btn {
+	background: rgba(255,255,255,0.04);
+	color: white;
+	padding: 8px 12px;
+	border-radius: 18px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	border: 1px solid transparent;
+}
+
+.greeting-btn:hover {
+	background: rgba(255,255,255,0.12);
+	border-color: rgba(255,255,255,0.06);
+}
+
+.user-dropdown {
+	position: absolute;
+	right: 0;
+	top: calc(100% + 8px);
+	background: #ffffff;
+	color: #003d7a;
+	border-radius: 8px;
+	box-shadow: 0 8px 22px rgba(2,6,23,0.12);
+	padding: 8px 0;
+	min-width: 160px;
+	z-index: 1100;
+}
+
+/* Suggestions dropdown */
+.search-suggestions {
+	position: absolute;
+	top: calc(100% + 8px);
+	left: 0;
+	width: var(--search-width);
+	background: white;
+	color: #111827;
+	border: 1px solid rgba(15,23,42,0.06);
+	box-shadow: 0 8px 24px rgba(2,6,23,0.12);
+	border-radius: 8px;
+	z-index: 1200;
+	overflow-y: auto; /* scroll khi nội dung vượt */
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	max-height: 300px; /* tăng chiều cao tối đa */
+}
+
+.suggestion-item {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	padding: 8px 10px;
+	cursor: pointer;
+}
+
+/* Responsive: make search wider on larger screens */
+@media (min-width: 1200px) {
+	.search-form { --search-width: 280px; }
+}
+
+@media (max-width: 480px) {
+	.search-form { --search-width: 180px; }
+	.search-suggestions { left: -8px; }
+}
+
+.suggestion-item.highlight,
+.suggestion-item:hover {
+	background: #f0f6ff;
+}
+
+.suggestion-thumb {
+	width: 48px;
+	height: 68px;
+	object-fit: cover;
+	border-radius: 4px;
+	background: #eef2ff;
+	flex-shrink: 0;
+}
+
+.suggestion-thumb.placeholder {
+	display: inline-block;
+}
+
+.suggestion-title {
+	font-size: 0.92rem;
+	color: #0f172a;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.dropdown-item {
+	display: block;
+	width: 100%;
+	text-align: left;
+	background: transparent;
+	border: none;
+	padding: 8px 16px;
+	color: #003d7a;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.dropdown-item:hover {
+	background: rgba(0,61,122,0.06);
+}

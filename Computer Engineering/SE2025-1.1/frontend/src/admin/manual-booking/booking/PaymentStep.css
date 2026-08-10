@@ -1,0 +1,236 @@
+/* PaymentStep Component Styles */
+
+/* Success Message Container */
+.payment-success-container {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+  border-radius: 12px;
+}
+
+.payment-success-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.payment-success-title {
+  color: #fff !important;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.payment-success-message {
+  color: #cbd5e1;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* Booking Code Display Box */
+.booking-code-box {
+  background-color: #f1f5f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 2px solid #4ade80;
+}
+
+.booking-code-label {
+  color: #0f172a;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.booking-code-value {
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
+.booking-code-hint {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Payment Summary Section */
+.payment-summary-section {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border-left: 4px solid #4ade80;
+}
+
+.payment-summary-section p {
+  color: #cbd5e1;
+  margin: 8px 0;
+}
+
+.payment-amount {
+  color: #4ade80;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.payment-note {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 12px !important;
+  font-style: italic;
+}
+
+/* Payment Info Box */
+.payment-info-box {
+  background-color: rgba(74, 222, 128, 0.1);
+  border: 1px solid #4ade80;
+  padding: 16px;
+  border-radius: 6px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.payment-info-box p {
+  color: #cbd5e1;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+/* Bank Transfer Container */
+.payment-bank-container {
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+  border-radius: 12px;
+}
+
+.payment-bank-title {
+  color: #60a5fa;
+  margin-bottom: 25px;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.bank-qr {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #4ade80;
+  padding: 25px;
+  margin: 20px 0;
+}
+
+.bank-qr h3 {
+  color: var(--color-text);
+  margin-bottom: 15px;
+}
+
+.payment-qr-image {
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  display: inline-block;
+  border: 2px solid #4ade80;
+}
+
+.payment-status-text {
+  color: #94a3b8;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.payment-expired-container {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+
+.payment-expired-text {
+  color: #fca5a5;
+  margin: 0;
+  text-align: center;
+}
+
+/* Payment Methods Section */
+.payment-methods-container {
+  margin-top: 24px;
+}
+
+.payment-total-section {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-total-label {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+.payment-total-amount {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4ade80;
+  letter-spacing: 0.5px;
+}
+
+/* Bank Transfer QR Code Container */
+.payment-qr-container {
+  margin-top: 24px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payment-qr-instruction {
+  color: #cbd5e1;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* Booking Code Box for Bank Transfer */
+.booking-code-bank-box {
+  margin-top: 16px;
+  background-color: #f1f5f9;
+  padding: 16px;
+  border-radius: 6px;
+  border: 2px solid #4ade80;
+}
+
+.booking-code-bank-label {
+  color: #0f172a;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.booking-code-bank-value {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Payment Actions */
+.payment-actions-section {
+  margin-top: 24px;
+}
+

@@ -1,0 +1,473 @@
+/* Styles adapted from home.css for Booking page */
+.booking-page {
+  background-color: white;
+  min-height: 100vh;
+  color: white;
+}
+
+.booking-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.booking-section {
+  margin-bottom: 64px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 0 1rem;
+}
+
+.section-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.view-all {
+  background-color: transparent;
+  color: #4a90e2;
+  border: 2px solid #4a90e2;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.view-all:hover {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.loading {
+  text-align: center;
+  padding: 48px;
+  font-size: 1.2rem;
+  color: #94a3b8;
+}
+
+.text-title {
+  border: 3px solid #0d2f6d;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background-color: #0d2f6d;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Booking page specific styles */
+.booking-page {
+  background-color: white;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide footer only on booking page (scoped) */
+.booking-page footer {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.booking-main {
+  flex: 1;
+  color: white;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 16px;
+  width: 100%;
+}
+
+/* Ensure all text inside booking-main is white */
+.booking-main,
+.booking-main * {
+  color: white !important;
+}
+
+.back-button {
+  margin-bottom: 24px;
+  background-color: #475569;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.error-box {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.booking-card {
+  background-color: #0d2f6d;
+  border-radius: 8px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+
+.booking-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.booking-subtext {
+  color: #9ca3af;
+  margin-bottom: 32px;
+  font-size: 24px;
+}
+
+.showtimes { margin-bottom: 32px; }
+.showtimes h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+.showtimes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.showtime-button {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background-color: #334155;
+  color: white;
+  cursor: pointer;
+}
+.showtime-button.active { border: 2px solid #2563eb; background-color: #1e40af; }
+
+.seats-section { margin-bottom: 32px; padding: 24px; background-color: #334155; border-radius: 8px; }
+.screen { text-align: center; margin-bottom: 24px; }
+.screen p { color: #9ca3af; margin-bottom: 8px; }
+.screen-bar { height: 4px; background: linear-gradient(to right, transparent, #3b82f6, transparent); }
+.seats-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; margin-bottom: 32px; }
+
+.seat-btn { padding: 8px; border-radius: 6px; font-size: 12px; font-weight: 600; border: none; color: white; cursor: pointer; }
+.seat-btn.sold { background: #6b7280; cursor: not-allowed; opacity: 0.5; }
+.seat-btn.priority { background: #f59e0b; }
+.seat-btn.selected { background: #2563eb; }
+.seat-btn.available { background: #475569; }
+
+.legend { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; }
+.legend .item { display: flex; gap: 8px; align-items: center; }
+.legend .box { width: 16px; height: 16px; border-radius: 4px; }
+
+.summary { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid #475569; }
+.summary .info p { color: #9ca3af; margin: 0 0 8px 0; }
+.summary .price { font-size: 24px; font-weight: bold; color: #60a5fa; }
+
+.confirm-button { background-color: #2563eb; color: white; padding: 12px 32px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; }
+.confirm-button[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+
+/* MOBILE: max-width 480px */
+@media (max-width: 480px) {
+  .booking-container {
+    padding: 16px 12px;
+  }
+
+  .booking-main {
+    padding: 16px 12px;
+  }
+
+  .back-button {
+    margin-bottom: 16px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .booking-card {
+    padding: 16px;
+    border-radius: 6px;
+  }
+
+  .booking-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .booking-subtext {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .section-header h2 {
+    font-size: 14px;
+  }
+
+  .showtimes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .seats-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+  }
+
+  .seat-btn {
+    padding: 6px;
+    font-size: 10px;
+  }
+
+  .legend {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .confirm-button {
+    width: 100%;
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+/* TABLET: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .booking-container {
+    padding: 24px 14px;
+  }
+
+  .booking-main {
+    padding: 24px 14px;
+  }
+
+  .back-button {
+    margin-bottom: 20px;
+    padding: 7px 14px;
+    font-size: 0.9rem;
+  }
+
+  .booking-card {
+    padding: 20px;
+  }
+
+  .booking-title {
+    font-size: 24px;
+  }
+
+  .section-header h2 {
+    font-size: 16px;
+  }
+
+  .showtimes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+
+  .seats-grid {
+    grid-template-columns: repeat(9, 1fr);
+    gap: 7px;
+  }
+
+  .seat-btn {
+    padding: 7px;
+    font-size: 11px;
+  }
+
+  .summary {
+    flex-direction: row;
+  }
+
+  .confirm-button {
+    padding: 11px 28px;
+    font-size: 0.95rem;
+  }
+}
+
+/* TABLET: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .booking-container {
+    padding: 32px 16px;
+  }
+
+  .booking-main {
+    padding: 32px 16px;
+  }
+
+  .back-button {
+    margin-bottom: 22px;
+    padding: 8px 16px;
+  }
+
+  .booking-card {
+    padding: 24px;
+  }
+
+  .booking-title {
+    font-size: 26px;
+  }
+
+  .section-header h2 {
+    font-size: 18px;
+  }
+
+  .showtimes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .seats-grid {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .confirm-button {
+    padding: 12px 30px;
+  }
+}
+
+/* DESKTOP: 1025px+ */
+@media (min-width: 1025px) {
+  .booking-container {
+    padding: 48px 16px;
+  }
+
+  .booking-main {
+    padding: 48px 16px;
+  }
+
+  .booking-card {
+    padding: 32px;
+  }
+
+  .booking-title {
+    font-size: 30px;
+  }
+
+  .section-header h2 {
+    font-size: 24px;
+  }
+
+  .showtimes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .seats-grid {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .confirm-button {
+    padding: 12px 32px;
+  }
+}
+
+/* ===== INLINE STYLES MIGRATED FROM BOOKING.TSX ===== */
+
+/* Reservation flow container */
+.reservation-flow-container {
+  padding: 20px;
+  /* background: #0055b8; */
+  background: linear-gradient(135deg, #003d7a 0%, #0055b8 100%);
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+/* Login prompt text */
+.login-prompt-text {
+  color: #f8fafc;
+}
+
+/* Flex containers with gap */
+.flex-gap-8 {
+  display: flex;
+  gap: 8px;
+}
+
+.flex-gap-12 {
+  display: flex;
+  gap: 12px;
+}
+
+.flex-gap-90 {
+  display: flex;
+  gap: 90px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Margin utilities */
+.mt-12 {
+  margin-top: 12px;
+}
+
+.mb-12 {
+  margin-bottom: 12px;
+}
+
+/* QR code image */
+.qr-code-image {
+  width: 220px;
+  height: 220px;
+  background: #fff;
+  margin-left: 40px;
+}
+
+/* QR instructions text */
+.qr-instructions {
+  color: #cbd5e1;
+}
+
+.qr-instructions p {
+  margin: 0;
+}
+
+.qr-instructions p:first-child {
+  margin-bottom: 0;
+}
+
+.qr-instructions p:nth-child(2) {
+  margin-top: 12px;
+}
+
+/* Seats section container */
+.seats-section-container {
+  margin-bottom: 32px;
+  padding: 24px;
+  background-color: #334155;
+  border-radius: 8px;
+}
+
+/* Legend item boxes */
+.legend-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-box-available {
+  background: #475569;
+}
+
+.legend-box-held {
+  background: #f59e0b;
+}
+
+.legend-box-sold {
+  background: #6b7280;
+}
+
+/* Legend text */
+.legend-text {
+  color: #cbd5e1;
+}
+
+/* Booking info text color */
+.booking-info-text {
+  color: #fff;
+}
