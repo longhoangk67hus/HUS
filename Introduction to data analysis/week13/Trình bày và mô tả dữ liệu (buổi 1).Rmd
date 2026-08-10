@@ -1,0 +1,413 @@
+------------------------------------------------------------------------
+
+---
+title: "Trình bày và mô tả dữ liệu (buổi 1)"
+author: "Nguyễn Thị Phương Mai"
+date: "2023-04-17"
+output: html_document
+---
+
+### 1. Lập bảng phân bố tần số và bảng tần suất cho dữ liệu:
+
+Để lập bảng phân bố tần số cho dữ liệu ta dùng hàm **table**:
+
+**table(x, exclude)**
+
+trong đó:
+
+**x:** véc tơ dữ liệu cần tính tần số.
+
+**exclude:** tham số chỉ những phần tử không tham gia vào quá trình tính tần số, mặc định **exclude = c(NA, NaN)**, tức là không tính tần số những dữ liệu trống **NA(Not Available)** và những dữ liệu không phải số **NaN(Not a Number)**.
+
+Để lập bảng phân bố tần số cho dữ liệu ta dùng hàm **prop.table**:
+
+**prop.table(x, margin)**
+
+trong đó:
+
+**x:** véc tơ dữ liệu hoặc bảng dữ liệu cần tính tần suất của các phần tử;
+
+**margin:** tham số chỉ cách tính tần suất trong bảng dữ liệu hai chiều. Nếu **margin=1** thì tính tần suất các phần tử trên mỗi hàng, nếu **margin=2** thì tính tần suất các phần tử trên mỗi cột. Mặc định **margin=NULL**, tức là tính tần suất trên tổng số phần tử trong bảng dữ liệu.
+
+```{r}
+#install.packages("ggplot2")
+#library(ggplot2)
+#data=mpg
+#View(data)
+#attach(data)
+#Lập bảng phân bố tần số của manufacturer
+#bang_tan_so = table(manufacturer)
+#bang_tan_so
+#Lập bảng phân bố tần suất của manufacturer
+#bang_tan_suat=prop.table(bang_tan_so)
+#bang_tan_suat
+#Làm tròn tần số đến 2 chữ số thập phân
+#round(bang_tan_suat,digits=2)
+#Lập bảng phân bố tần số 2 chiều cho cột manufacturer và class
+#bang_tan_so_1=table(manufacturer, class)
+#bang_tan_so_1
+#Lập bảng phân bố tần suất 2 chiều cho cột manufacturer và class
+#bang_tan_suat_0=prop.table(bang_tan_so) #margin=NULL
+#bang_tan_so_0
+#bang_tan_suat_1=prop.table(bang_tan_so_1,margin=1) #theo hàng margin=1
+#bang_tan_so_1
+#bang_tan_suat_2=prop.table(bang_tan_so_1,margin=2) #theo cột margin=2
+#bang_tan_so_2
+```
+
+
+
+### 2.Bảng phân bố tần số ghép lớp (khoảng):
+
+Sử dụng hàm **cut** để lập bảng phân bố tần số ghép lớp (khoảng):
+
+**cut(x, breaks, labels, right, include.lowest, dig.lab)**
+
+trong đó:
+
+**x:** véc tơ dữ liệu dạng số cần được ghép lớp (khoảng).
+
+**breaks:** véc tơ số (ít nhất hai tọa độ) gồm các điểm chia hoặc là một số nguyên dương (lớn hơn hoặc bằng 2) chỉ số lớp (khoảng).
+
+**labels:** nhãn của các lớp (khoảng), theo mặc định **labels = NULL**, các nhãn được xây dựng dưới dạng nửa khoảng (a; b].
+
+**right:** dạng logic, nếu **right = TRUE** lớp (khoảng) có dạng (a; b], nếu **right= FALSE** lớp (khoảng) có dạng [a; b), mặc định **right = TRUE**.
+
+**include.lowest:** dạng logic, nếu **include.lowest = TRUE** thì lớp (khoảng) đầu chứa giá trị nhỏ nhất của các điểm chia (khi **right = TRUE**) hoặc lớp (khoảng) cuối chứa giá trị lớn nhất của các điểm chia (khi **right = FALSE**), mặc định **include.lowest = FALSE**.
+
+**dig.lab:** số nguyên dương chỉ số chữ số trong điểm chia (trong trường hợp không gán nhãn cho các khoảng chia), mặc định **dig.lab = 3**.
+
+```{r}
+data=mtcars
+View(data)
+min(data$hp)
+max(data$hp)
+#Lập bảng phân bố ghép lớp cho cột hp theo các khoảng:
+phan_loai=cut(data$hp, breaks=c(52, 96.5, 180,335),right=F)
+bang_ghep_lop=table(phan_loai)
+bang_ghep_lop
+#Lập bảng phân bố ghép lớp cho cột hp khi biết cần chia 7 khoảng:
+phan_loai_1=cut(data$hp, 7)
+bang_ghep_lop_1=table(phan_loai_1)
+bang_ghep_lop_1
+```
+
+
+
+### 3. Vẽ biểu đồ với Rstudio: 
+
+Để vẽ biểu đồ trong Rstudio ta có thể sử dụng các tham số sau:
+
+**add=FALSE** nếu **add=TRUE** thì hình đang vẽ sẽ chèn thêm vào hình vẽ trước
+(nếu có).
+
+**axes=TRUE** nếu **axes=FALSE** thì không vẽ các trục và hộp bao quanh.
+
+**type="p"** miêu tả kiểu vẽ: "p"(points) dạng điểm; "l"(lines) dạng
+đoạn thẳng; "b"(both points and lines) dạng các điểm được nối bởi đoạn thẳng; "o"(overstruck) dạng các điểm được nối bởi đoạn thẳng nhưng đoạn thẳng đi qua các điểm; "h"(histogram) dạng thẳng đứng; "s"(stair steps) dạng bậc thang; "n"(no plot) không có kiểu gì cả.
+
+**xlim, ylim":** giới hạn của trục nằm ngang và trục thẳng đứng
+xlab, ylab tên của trục nằm ngang và trục thẳng đứng (kiểu kí tự).
+
+**main:** tiêu đề của hình vẽ (kiểu kí tự).
+
+**sub:** tiêu đề phụ của hình vẽ (kiểu kí tự).
+
+**axis(side, vect)**: vẽ thêm trục vào hình vẽ, trục dưới nếu side=1, trục
+trái nếu side=2, trục trên nếu side=3, trục phải nếu side=4, nội dung điền trên mỗi trục qua vectơ.
+
+**adj:** giá trị của adj căn chỉnh đoạn văn bản trong hình vẽ tính từ biên trái
+của đoạn văn bản: adj=0 căn trái, adj=0.5 căn giữa, adj=1 căn phải,
+adj>1 xa hẳn về bên trái, adj<0 xa hẳn về bên phải.
+
+**bg:** điều chỉnh màu của nền màn hình đồ họa background, ví dụ
+bg="blue", bg="lightyellow",...
+
+**bty:** điều chỉnh kiểu khung bao quanh hình vẽ, bty="n" không có khung
+bao quanh hình vẽ, bty="o" vẽ 4 cạnh quanh hình vẽ theo hình chữ o,
+bty="c" vẽ 3 cạnh quanh hình vẽ theo hình chữ c, bty="l" vẽ 2 cạnh
+quanh hình vẽ theo hình chữ l, bty="7" vẽ 2 cạnh quanh hình vẽ theo
+hình số 7.
+
+**cex:** điều chỉnh cỡ chữ của văn bản hoặc kích cỡ của các biểu tượng trong hình
+vẽ, điều chỉnh số (chữ) trên các trục dùng cex.axis, điều chỉnh cỡ của
+tên trục dùng cex.lab, điều chỉnh cỡ của tiêu đề, tiêu đề phụ hình vẽ dùng
+cex.main, cex.sub.
+
+**col:** điều chỉnh màu của các biểu tượng, giống như cex có các hàm
+col.axis, col.lab, col.main, col.sub.
+
+**font:** số nguyên dương điều chỉnh kiểu của văn bản: 1:bình thường,
+2:nghiêng, 3:đậm, 4:nghiêng,đậm, giống như cex, ta có font.axis, font.lab, font.main, font.sub.
+
+**las:** số nguyên dương điều chỉnh hướng tên của các trục: 0:song song với
+các trục, 1:nằm ngang, 2:vuông góc với các trục, 3:thẳng đứng.
+
+**lty:** số nguyên dương điều chỉnh kiểu của đoạn thẳng: 1:liền nét,
+2:nét, 3:chấm, 4:chấm,nét, 5:nét dài, 6:hai nét.
+
+**lwd:** dạng số điều chỉnh độ đậm của các đoạn thẳng.
+
+**mfcol:** véc tơ dạng c(nr; nc) chia màn hình đồ họa thành ma trận nr hàng và nc
+cột, các hình vẽ được vẽ theo cột.
+
+**mfrow:** véc tơ dạng c(nr; nc) chia màn hình đồ họa thành ma trận nr hàng và nc
+cột, các hình vẽ được vẽ theo hàng.
+
+**pch:** điều chỉnh kiểu của kí hiệu, một số kiểu kí hiệu điển hình liệt kê trong hình 4.1 dưới đây.
+![](E:\Teaching\Introduction to data analysis\Lectures 2023-2024\Lý thuyết\Trình bày và mô tả dữ liệu trên R\h1.png)
+
+**xaxt:** nếu xaxt="n" thì không vẽ trục x (trục nằm ngang).
+
+**yaxt:** nếu yaxt="n" thì không vẽ trục y (trục thẳng đứng).
+
+
+Ngoài ra, ta có tham số để tạo thêm hộp chú thích chi cho biểu đồ:
+
+**legend(vitri, legend, fill, col,...)**
+
+trong đó:
+
+**vitri:** có thể là một cặp x, y ứng với tọa độ mà ta muốn đặt chú thích, hoặc một trong các từ sau:
+"bottomright", "bottom", "bottomleft", "left", "topleft", "top", "topright", "right", "center".
+
+**legend:** là vector chứa nội dung của các chú thích.
+
+**fill hoặc col**: là vector chứa màu của các chú thích. Ta sử dụng **col** để ký hiệu cho biểu đồ tán xạ và biểu đồ đường, **fill** cho biểu đồ cột và biểu đồ tròn.
+
+#### 3.1. Biểu đồ cột: ####
+
+Dùng để đưa ra so sánh giữa các nhóm. Trong Rstudio, để vẽ biểu đồ cột, ta dùng hàm **barplot**:
+
+  **barplot(height, names.arg, legend.text, beside, horiz, col, border, main, sub, xlab, ylab, xlim, ylim)**
+
+trong đó:
+
+  **height**: véc tơ hoặc ma trận dữ liệu dùng để vẽ biểu đồ.
+
+  **names.arg**: tên viết dưới mỗi thanh hoặc nhóm các thanh trong biểu đồ.
+
+**legend.text**: véc tơ gồm các kí tự hoặc dạng logic dùng để ghi chú thích trong biểu đồ.
+
+  **beside**: dạng logic, nếu **beside = FALSE** thì các thanh của biểu đồ được vẽ chồng lên nhau, nếu **beside = TRUE** thì các thanh được vẽ cạnh nhau.
+
+  **horiz**: dạng logic, nếu **horiz = FALSE** thì các thanh được vẽ vuông góc với trục nằm ngang với thanh đầu tiên nằm ở bên trái, nếu **horiz = TRUE** thì các thanh được vẽ song song với trục nằm ngang với thanh đầu tiên nằm ở dưới cùng.
+
+  **col**: màu của các cột.
+
+  **border**: màu đường biên của các cột.
+
+  **main, sub**: tên của biểu đồ.
+
+  **xlab, ylab**: tên trục x; y.
+
+  **xlim, ylim**: giới hạn trên các trục.
+
+***Ví dụ:*** Ta dùng biểu đồ cột để minh họa dân số của Việt Nam (đơn vị triệu người) và các nước trong khu vực Đông Nam Á trong một số năm với số liệu được cho trong bảng sau:
+
+![](E:\Teaching\Introduction to data analysis\Lectures 2023-2024\Lý thuyết\Trình bày và mô tả dữ liệu trên R\h2.png)
+
+```{r }
+#Nhập tần số từng thanh
+SoDan = c(79.7, 80.9, 82.0, 83.1, 84.1)
+#Vẽ biểu đồ cột
+barplot(SoDan, main = "Dân số Việt Nam qua một số năm",
+sub = "Số Liệu năm 2007", names.arg = c(2002,2003,2004,2005,2006), col = rainbow(5), ylim = c(0,100), xlim = c(0,6))
+# Chú thích đơn vị trên trục tần số
+mtext("Triệu người", at = 0.3)
+```
+
+#### 3.2. Biểu đồ cột chồng, cột kép:####
+
+***Ví dụ:*** Ta dùng biểu đồ cột chồng hoặc kép để minh họa dân số một số nước như Việt Nam, Indonesia, Thái Lan và Singapore trong 3 năm 2002, 2004 và 2006.
+
+##### 3.2.1. Biểu đồ cột kép: #####
+```{r}
+#Vẽ biểu đồ cột chồng bằng cách để tham số beside = TRUE
+#Nhập tần số các nhóm thanh dạng ma trận
+DanSo = matrix(c(79.7, 211.4, 63.1, 4.2, 82, 217.1,
+64.2, 4.2, 84.1, 222.1, 65.2, 4.5), nrow = 4)
+DanSo
+barplot(DanSo, main = "Dân số của một số nước Đông Nam Á ",sub = "Số liệu năm 2007", col = c("green","pink","orange","blue","purple"),names.arg = c(2002, 2004, 2006), xlim = c(0,18), ylim = c(0,250),beside = TRUE, col.axis = "blue" , col.main = "red", col.sub = "red", bty = "o")
+mtext("Triệu người", at =0.3, col = "blue")
+# Chú thích các nhóm thanh
+legend(14, 200, c("Vietnam", "Indonesia", "Thailand", "Singapore"),
+col =c("green","pink","orange","blue","purple") , text.col =c("green","pink","orange","blue","purple") , bg = "grey90 ",lty = c(1, 1, 1, 1), pch = c(1,4,1,4), bty = "o")
+axis(side = 2,col = "blue", col.axis = "blue")
+
+```
+
+##### 3.2.2. Biểu đồ cột chồng: #####
+```{r}
+#Vẽ biểu đồ cột chồng bằng cách để tham số beside = FALSE
+barplot(DanSo, main = "Dân số một số nước Đông Nam Á ",
+sub = "Số liệu năm 2007", col = c("green","pink","orange","blue","purple"),
+names.arg = c(2002, 2004, 2006), xlim = c(0,10), ylim = c(0,500),
+beside = FALSE, col.axis = "blue" , col.main = "red", col.sub = "red", bty = "o")
+mtext("Trieu nguoi", at =0.3, col = "blue")
+# Chú thích các nhóm thanh
+legend(5,300, c("Vietnam", "Indonesia", "Thailand", "Singapore"),
+col = c("green","pink","orange","blue","purple") , text.col =c("green","pink","orange","blue","purple") , bg = "gray90", lty = c(1, 1, 1, 1), pch = c(1,4,1,4), bty = "o")
+axis(side = 2,col = "blue", col.axis = "blue")
+```
+
+
+#### 3.3. Tổ chức đồ (histogram): #### 
+
+Dùng để biểu thị tần số/ tần suất các giá trị trong mỗi khoảng giá trị. Để vẽ tổ chức đồ ta dùng hàm **hist**:
+
+**hist(x, breaks, freq, include.lowest, right, col, border, main, xlim, ylim, xlab, ylab, labels)**
+
+trong đó,
+
+**x:** véc tơ dữ liệu dạng số cần vẽ biểu đồ.
+
+**freq:** dạng logic, nếu **freq = TRUE** các cột của biểu đồ mô tả tần số, nếu **freq = FALSE** các cột của biểu đồ mô tả tần suất mật độ.
+
+**breaks:** véc tơ số (ít nhất hai tọa độ) gồm các điểm chia giữa các cột hoặc là một số nguyên dương (lớn hơn hoặc bằng 2) chỉ số cột của biểu đồ.
+
+**right:** dạng logic, nếu **right = TRUE** thì các cột lấy phần tử trong khoảng dạng (a; b], nếu **right = FALSE** thì trong khoảng dạng [a; b), mặc định **right = TRUE.**
+
+**include.lowest:** dạng logic, nếu **include.lowest = TRUE** thì cột đầu tiên chứa giá trị nhỏ nhất của các điểm chia (khi **right = TRUE**) hoặc cột cuối cùng chứa giá trị lớn nhất của các điểm chia (khi **right = FALSE**), mặc định **include.lowest = TRUE.**
+
+**col:** màu của các cột.
+
+**border:** màu đường biên của các cột.
+
+**main,xlab,ylab:** tên của biểu đồ, tên trục x; y.
+
+**xlim,ylim:** giới hạn trên các trục.
+
+**labels:** dạng logic hoặc dạng kí tự điền tên trên đỉnh mỗi cột.
+
+***Ví dụ:*** Vẽ tổ chức đồ cho cột Tuổi.
+
+```{r}
+Tuoi = sample(10:80,700, replace = T)
+hist(Tuoi)
+```
+
+
+Ta cũng có thể điều chỉnh biểu đồ để phù hợp với số liệu và sinh động hơn
+bằng các lệnh:
+```{r}
+Tuoi = sample(10:80,700, replace = T)
+hist(Tuoi, xlim = c(0,100), ylim = c(0,160), breaks = seq(10,80,10),right = F, xlab = "Tuoi", ylab = "Tan So", xaxt = "n", yaxt = "n", labels = T, main = "Biểu đồ tần số của Tuổi", col = "lightblue1", border = "blue1")
+#Điền số trên các trục
+axis(side = 1, c(10, 20, 30, 40, 50, 60, 70, 80))
+axis(side = 2, c(0,40,80,120,160))
+```
+
+
+#### 3.4. Biểu đồ tròn: ####
+
+Dùng để phân tích hoặc so sánh ở mức độ tổng thể. Trong R để vẽ biểu đồ hình tròn ta dùng hàm **pie**:
+
+**pie(x, labels, col, border, lty, main, sub)**
+
+trong đó:
+
+**x:** véc tơ dạng số thể hiện giá trị của mỗi hình quạt trong biểu đồ.
+
+**labels:** tên của những hình quạt trong biểu đồ.
+
+**col:** màu của các hình quạt.
+
+**border:** màu của đường ranh giới giữa các hình quạt.
+
+**lty:** kiểu nét vẽ của đường ranh giới giữa các hình quạt.
+
+**main,sub:** tiêu đề và tiêu đề phụ của biểu đồ.
+
+***Ví dụ.*** Ta dùng biểu đồ hình tròn minh họa diện tích của mỗi châu so với toàn bộ diện tích trên thế giới được vẽ qua đoạn lệnh sau:
+
+![](E:\Teaching\Introduction to data analysis\Lectures 2023-2024\Lý thuyết\Trình bày và mô tả dữ liệu trên R\h3.png)
+```{r}
+DienTich = c(30306, 42049, 31764, 22985, 8537)
+TenChau = c("Châu Phi", "Châu Mỹ", "Châu Á", "Châu Âu", "Châu Đại Dương")
+pie(DienTich, col=rainbow(5), labels = TenChau, font=2, main="Diện tích các châu trên thế giới", sub="Số liệu năm 2007")
+```
+
+
+Nếu muốn điền phần trăm (%) diện tích của từng châu so với toàn bộ diện tích trên thế giới, ta có thể làm như sau:
+
+```{r}
+DienTich = c(30306, 42049, 31764, 22985, 8537)
+#Tính tỉ lệ phần trăm
+TiLe = round(prop.table(DienTich),3)*100
+TiLe
+TenChau = c("Châu Phi", "Châu Mỹ", "Châu Á", "Châu Âu", "Châu Đại Dương")
+pie(DienTich, col=rainbow(5), labels = paste(TenChau, ":" ,TiLe,"%"))
+#Viết tên biểu đồ riêng
+title(main="Diện tích các châu trên thế giới", sub="Số liệu năm 2007", font = 2)
+```
+
+#### 3.4.Biểu đồ tán xạ: ####
+
+Dùng để quan sát mối liên hệ giữa hai biến. Trong R biểu đồ tán xạ được vẽ qua hàm **plot** với tham số **type="p"**. Một số tham số cần thiết của hàm **plot** trong trường hợp này được cho như sau:
+
+**plot (x, y, type = "p", main = "", xlab ="", ylab ="", bty ="l")**
+
+trong đó:
+
+**x, y** tương ứng là véc tơ tọa độ của biến định lượng thứ nhất, thứ hai;
+
+**main, xlab, ylab** tên của biểu đồ, tên biến thứ nhất, biến thứ hai;
+
+**type = "p"** kiểu vẽ gồm các điểm trên mặt phẳng;
+
+**bty = "l"** kiểu bao quanh biểu đồ giống hai trục tọa độ đề các Oxy.
+
+***Ví dụ.*** Ta dùng biểu đồ tán xạ để mô tả mối quan hệ giữa chi phí và số khách như sau:
+
+```{r}
+SoKhach = c(61 ,63 ,67 ,69 ,70 ,74 ,76 ,81 ,86 ,91 ,95, 97)
+ChiPhi = c(4.28, 4.08, 4.42, 4.17, 4.48, 4.30, 4.82, 4.70, 5.11, 5.13, 5.64, 5.56)
+plot(SoKhach, ChiPhi, main = "Biểu đồ tán xạ thể hiện mối quan hệ giữa chi phí và số lượng hành khách",xlab="Số lượng hành khách",ylab="Chi phí", bty = "l", type = "p", pch = 16, col="red", col.main = "blue", col.lab="blue", col.axis = "blue")
+```
+
+Ngoài ra, ta cũng có thể vẽ biểu đồ dạng đường như sau:
+
+```{r}
+plot(SoKhach, ChiPhi, main = "Biểu đồ đường thể hiện mối quan hệ giữa chi phí và số lượng hành khách",xlab="Số lượng hành khách",ylab="Chi phí", bty = "l", type = "l", pch = 16, col="red", col.main = "blue", col.lab="blue", col.axis = "blue")
+```
+
+#### 3.5. Lưu hình đã vẽ trong Rstudio: ###
+
+Sử dụng các hàm **pdf() , png() , jpeg(),...** để mở 1 file, ta sẽ sử dụng file này để lưu biểu đồ.
+
+**pdf(filename, width, height, units, bg)**: pdf file
+
+**png(filename, width, height, units, bg)**: png file
+
+**jpeg(filename, width, height, units, quality, bg)**: jpeg file
+
+trong đó,
+
+**filename:** tên của tệp đầu ra.
+
+**width:** chiều rộng của thiết bị, mặc định là 480px.
+
+**height:** chiều cao của thiết bị, mặc định là 480px.
+
+**units:** đơn vị của chiều cao và chiều rộng, có thể là inches, px(pixels),
+cm, mm, mặc định đơn vị là px.
+
+**bg:** màu của nền hình vẽ, mặc định là màu trắng.
+
+**quality:** phần trăm chỉ chất lượng của ảnh dạng JPEG, mặc định là 75%.
+
+***Ví dụ.*** Lưu biểu đồ tán xạ thể hiện mối quan hệ giữa chi phí và số lượng hành khách với tên là "Chi phí và số lượng hành khách.jpeg" tại thư mục "E:\Teaching\Introduction to data analysis\Lectures 2023-2024\Lý thuyết\Trình bày và mô tả dữ liệu trên R"
+```{r}
+#Chọn thư mục để lưu hình vẽ
+#setwd("E:\\Teaching\\Introduction to data analysis\\Lectures 2023-2024\\Lý thuyết\\Trình bày và mô tả dữ liệu trên R")
+#Tạo thiết bị đồ họa dạng .jpeg
+#jpeg(filename = "Chi phí và số lượng hành khách.jpeg")
+#Thực hiện các thao tác vẽ hình
+#SoKhach = c(61 ,63 ,67 ,69 ,70 ,74 ,76 ,81 ,86 ,91 ,95, 97)
+#ChiPhi = c(4.28, 4.08, 4.42, 4.17, 4.48, 4.30, 4.82, 4.70, 5.11, 5.13, 5.64, 5.56)
+#plot(SoKhach, ChiPhi, main = "Biểu đồ tán xạ thể hiện mối quan hệ giữa chi phí và số lượng hành khách",xlab="Số lượng hành khách",ylab="Chi phí", bty = "l", type = "p", pch = 16, col="red", col.main = "blue", col.lab="blue", col.axis = "blue")
+# Đóng thiết bị đồ họa
+#dev.off()
+```
+

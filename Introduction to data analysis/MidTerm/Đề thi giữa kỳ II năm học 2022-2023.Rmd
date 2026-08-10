@@ -1,0 +1,117 @@
+---
+title: "Đề thi giữa kỳ II năm học 2022-2023"
+author: "Nguyễn Thị Phương Mai"
+date: "2023-11-08"
+output: html_document
+---
+
+**Bài 1.** Đọc ví dụ dưới đây và trả lời ngắn gọn các câu hỏi bên dưới:
+
+Để nghiên cứu sự tác động của mức độ tham gia các hoạt động văn hóa- giải trí đến sức khỏe tinh thần của người dân trong một thành phố, nhà nghiên cứu đã lấy mẫu ngẫu nhiên 500 người trưởng thành trong độ tuổi từ $18$ đến $60$. Các câu hỏi được đặt trong cuộc khảo sát bao gồm thông tin về mức độ tham gia các hoạt động văn hóa- giải trí, cũng như các chỉ số sức khỏe tinh thần như stress, lo âu và hạnh phúc. Thống kê trên số người dân trong thành phố đó ta thu được mẫu số liệu.
+
+a. Tổng thể điều tra trong ví dụ trên là gì? (0.5 đ)
+
+Câu trả lời: Tổng điều tra ví dụ trên là người dân trong 1 thành phố.
+
+b. Tiêu thức thống kê trong ví dụ trên là gì? (0.5đ)
+
+Câu trả lời: Tiêu thức trong ví dụ trên là nghiên cứu sự tác động của mức độ tham gia các hoạt động văn hoá-giải trí đối với sức khoẻ tinh thần.
+
+c. Dữ liệu trong ví dụ thuộc kiểu dữ liệu nào? (0.5đ)
+
+Câu trả lời: Dữ liệu trong ví dụ thuộc kiểu dữ liệu thống kê và hồi quy.
+
+d. Xác định phương pháp chọn mẫu trong ví dụ trên? (0.5đ)
+
+Câu trả lời: Lấy mẫu ngẫu nhiên.
+
+
+**Bài 2.** Sử dụng phần mềm Rstudio thực hiện các yêu cầu sau:
+
+a. Tạo một dãy a bằng cách lặp lại vector $b = c(3, 7, 1, 9, 6)$ $n$ lần, trong đó n là số cuối của mã sinh viên (nếu số cuối của mã sinh viên là $0$ thì mặc định $n = 1$). (1.0đ)
+```{r}
+b <- c(3,7,1,9,6)
+a <- rep(b, times = 8)
+print(a)
+```
+
+b. Cho hai vector $x = c(28, 128, 34, 82, 84, 66)$ và $y = c(50, 10, 17, 25, 3 , 153)$, hãy tìm ra số lượng các phần tử trong vector $x$ lớn hơn giá trị trung bình của vector $y$. (1.0đ)
+```{r}
+x <- c(28, 128, 34, 82, 84, 66)
+y <- c(50, 10, 17, 25, 3 , 153)
+
+mean_y <- mean(y)
+
+count_element <- length(x[x> mean_y])
+print(count_element)
+```
+
+**Bài 3.** Từ bộ dữ liệu **Cars93** trong **package MASS**, trong đó: 
+
+- Horsepower: mã lực
+
+- Fuel.tank.capacity: Mức xăng tiêu thụ 
+
+- Airbags: Loại túi khí tiêu chuẩn
+
+- Manufacturer: hãng sản suất
+
+- Origin: Xuất xứ
+
+- Type: Kiểu xe
+
+- EngineSize: Loại động cơ
+
+- Passengers: Số hành khách chở được
+
+- Length: Chiều dài xe
+
+- Model: Mẫu xe
+
+ Sử dụng phần mềm Rstudio, thực hiện các yêu cầu sau: 
+ 
+a.In ra màn hình số lượng xe có có mã lực lớn hơn $200$.(1.0 đ)
+```{r}
+library(MASS)
+View(Cars93)
+print(paste("So luong xe co ma luc lon hon 200 la", nrow(Cars93[Cars93$Horsepower > 200,])))
+```
+b. Viết hàm so sánh mức xăng tiêu thụ trung bình của các loại xe sử dụng hai loại túi khí khác nhau.(1.0 đ)
+```{r}
+compareFuel <- function(x, y) {
+  mean1 = mean(Cars93[Cars93$AirBags == x,]$Fuel.tank.capacity)
+  mean2 = mean(Cars93[Cars93$AirBags == y,]$Fuel.tank.capacity)
+  if(mean1 > mean2) {
+    print(paste("Muc xang tieu thu cua ", x, "lon hon muc xang tieu thu cua ", y ))
+  }
+  else if(mean1 < mean2) {
+    print(paste("Muc xang tieu thu cua ", x, "nho hon muc xang tieu thu cua ", y ))
+  }
+  else {
+    print(paste("Muc xang tieu thu cua ", x, "bang hon muc xang tieu thu cua ", y ))
+  }
+
+}
+ unique1 = sample(unique(Cars93$AirBags), 2)
+  compareFuel(unique1[1], unique1[2])
+
+```
+c. Hãy cho biết mẫu xe nào có chiều dài lớn nhất mà không thuộc kiểu xe Large.(1.0 đ)
+```{r}
+notLarge = Cars93[Cars93$Type != "Large",]
+result = notLarge[notLarge$Length == max(notLarge$Length),]$Model
+print(paste("Cac mau xe co chieu dai lon nhat ma khong thuoc kieu large ", result))
+```
+d. Viết hàm cho biết hãng xe dùng túi khí và không xuất xứ từ Mỹ và chở được số hành khách lớn nhất và cho biết số hành khách lớn nhất đó là bao nhiêu? (1.0 đ)
+```{r}
+findCars <- function() {
+  data <- Cars93[Cars93$AirBags != "None" &Cars93$Origin != "USA",]
+  maxP <- max(data$Passengers)
+  ma <- data[data$Passengers == maxP,]$Manufacturer
+  ma
+  print(paste("Hang xe dung tui khi va khong san xuat tu My co so hanh khach lon nhat la", ma, "voi so hanh khach la", maxP))
+  
+}
+findCars()
+```
+

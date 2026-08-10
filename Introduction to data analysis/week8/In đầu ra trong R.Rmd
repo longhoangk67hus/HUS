@@ -1,0 +1,104 @@
+---
+title: "In đầu ra trong R"
+author: "Nguyễn Thị Phương Mai"
+date: "2023-11-08"
+output: html_document
+---
+### 1. Hàm ***print***:
+
+Cấu trúc: 
+
+***print("chuỗi") hoặc print(biến)***
+```{r}
+# R program to illustrate
+# printing output of an R program
+ 
+# print string
+print("GFG")
+ 
+# print variable
+# it will print 'GeeksforGeeks' on the console
+x = c("GeeksforGeeks")
+print(x)
+```
+### 2. Hàm ***paste*** và ***paste0***: 
+
+Là những hàm có thể in ra chuỗi và biến cùng với nhau. 
+
+Cấu trúc:
+
+***print(paste("chuỗi",biến)) hoặc print(paste0(biến,"chuỗi"))***
+
+Sự khác nhau giữa ***paste*** và ***paste0*** là đối với hàm ***paste*** giữa các argument (được ngăn cách bởi dấu phẩy) có dấu cách còn hàm ***paste0*** thì không có.
+```{r}
+# R program to illustrate
+# printing output of an R program
+ 
+x = c("GeeksforGeeks")
+ 
+# using paste inside print()
+print(paste(x, "là một chuỗi ký tự")) 
+ 
+# using paste0 inside print()
+print(paste0(x, "là một chuỗi ký tự")) 
+```
+### 3. Hàm ***cat***:
+
+Cấu trúc: 
+
+***cat("chuỗi") hoặc cat("chuỗi", biến)***
+
+```{r}
+# R program to illustrate
+# printing output of an R program
+ 
+# print string with variable
+# "\n" for new line
+x = c("GeeksforGeeks")
+cat(x, "là một chuỗi ký tự\n") 
+ 
+# print normal string
+cat("Trong ngôn ngữ R")
+```
+
+### 4. Hàm ***sprintf***
+
+Cấu trúc:
+
+***sprintf(“any string %d”, variable) or, sprintf(“any string %s”, variable) or, sprintf(“any string %f”, variable))...***
+
+```{r}
+x = c("GeeksforGeeks") # string
+x1 = 255            # integer
+x2 = 23.14          # float 
+ 
+# string print
+sprintf("%s là chuỗi ký tự", x)
+ 
+# integer print
+sprintf("%d là số nguyên", x1)
+ 
+# float print
+sprintf("%f là số thực", x2)
+```
+### 5. Hàm ***message***:
+
+Cấu trúc: 
+
+***message(“chuỗi”) or, message(“chuỗi”, biến)***
+```{r}
+# R program to illustrate
+# printing output of an R program
+ 
+x = c("GeeksforGeeks")
+# print string with variable
+message(x, "là một chuỗi ký tự") 
+# print normal string
+message("Trong ngôn ngữ R")
+
+```
+
+
+
+
+

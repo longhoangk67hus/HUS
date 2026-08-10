@@ -1,0 +1,80 @@
+---
+title: "Thực hành tiền xử lý dữ liệu (tiếp)"
+author: "Nguyễn Thị Phương Mai"
+date: "2023-03-06"
+output: html_document
+---
+
+## **Thực hành tiền xử lý dữ liệu (tiếp)**
+
+***Bài 1:***
+
+Dữ liệu "Product.csv" được cung cấp bao gồm 24 hàng và 8 biến, đọc tệp đã cho và đặt tên nó là dat. Thực hiện các yêu cầu sau:
+
+a\. Trích ra một bộ dữ liệu con bao gồm các mặt hàng được bán tại thành phố "Boston" và đặt tên nó là dat1.
+
+b\. Tính tổng giá của mặt hàng "Carrot".
+
+c\. Tính trung bình số lượng sản phẩm "Carrot" được bán tại thành phố Boston.
+
+```{r}
+
+```
+
+***Bài 2:*** Dữ liệu "dulieu2.csv" dưới đây là doanh số bán hàng của một công ty. Thực hiện các thao tác sau với phần mềm R.
+
+a\. Nhập dữ liệu vào R và đặt tên nó là data.
+
+b\. Trích ra một dữ liệu có sản phẩm (Product) là "Velo" và "Paseo"
+
+c\. \*Hãy cho biết chi phí sản xuất (Manufacturing.Price) tại nước nào là lớn nhất?
+
+d\. Viết một hàm để tính tổng doanh thu (Gross.Sales) của từng loại mặt hàng (Product).
+
+```{r}
+
+
+```
+
+***Bài 3:*** Cho dữ liệu về thông tin bán hàng của một công ty. Dữ liệu được cho trong file "Product.csv". Thực hiện các yêu cầu sau:
+
+1.  So sánh tổng doanh thu ở khu vực phía đông (East) và khu vực phía tây (West). Nếu tổng doanh thu ở khu vực phía đông lớn hơn/ nhỏ hơn/ bằng khu vực phía tây thì in ra "Tổng doanh thu ở khu vực phía đông lớn hơn/ nhỏ hơn/ bằng khu vực phía tây".
+
+2.  Viết một hàm để kiểm tra tổng số lượng bán ra của một sản phẩm tại New York. Kiểm tra với sản phẩm "Carrot".
+
+3.  Viết một hàm để đưa ra tên thành phố có tổng số lượng sản phẩm thuộc loại nào đó bán ra nhiều nhất. Kiểm tra với loại sản phẩm "Cookies".
+
+4.  So sánh hai Category bất kì. Nếu doanh thu trung bình của sản phẩm 1 lớn hơn/ nhỏ hơn/ bằng doanh thu trung bình của sản phẩm 2 thì in ra "Doanh thu trung bình của ... lớn hơn/ nhỏ hơn/ bằng doanh thu trung bình của ....
+
+```{r}
+
+```
+
+***Bài 4.*** Thực hiện lần lượt các thao tác sau với R.
+
+1.  Sử dụng hàm ***sample*** sinh ra một bộ dữ liệu về thông tin của $300$ sinh viên: bao gồm điểm thường xuyên, điểm giữa kỳ, điểm cuối kỳ ( điểm thường xuyên hơn kém nhau $1$, điểm giữa kỳ và điểm cuối kỳ hơn kém nhau $0.5$).
+
+2.  Tính điểm tổng kết của $300$ sinh viên theo công thức\
+    $$\text{tổng= điểm thường xuyên}\times 0.2+\text{ điểm giữa kỳ }\times 0.2+\text{ điểm cuối kỳ }\times 0.6.$$
+
+3.  Sử dụng hàm ***cut*** để xếp loại điểm như sau: nếu tổng điểm lớn hơn hoặc bằng $9.0$ được xếp điểm $A+$, $8.5\leq$ điểm tổng $< 9$ được xếp điểm $A$, $8.0\leq$ điểm tổng $< 8.5$ được xếp điểm $B+$, $7.0\leq$ điểm tổng $<8.0$ được xếp điểm $B$, điểm tổng $< 7.0$ được xếp điểm $C$.
+
+    ```{r}
+    
+    
+    ```
+
+***Bài 5***. Cho dữ liệu về chất lượng rượu trong ảnh dưới đây:
+
+![](E:\Teaching\Introduction to data analysis\Lectures 2023-2024\Bài tập\citric.acid.png)
+
+a.  Trong dữ liệu về ***citric.acid***, để khắc phục lỗi kĩ thuật khi đo đạc ta sẽ cộng thêm một lượng là $0.01$ với những giá trị không lớn hơn $0.02$. Sử dụng R để viết một hàm để thực hiện thao tác đó.
+
+b. Giả sử rằng rượu được đánh giá là tốt nếu hằng số $k > 8.3$, trong đó $$k=\dfrac{\text{quality}\times \text{alcohol}}{\text{sulphates}}.$$
+
+    Sử dụng hàm ***cut*** để phân loại chất lượng rượu từ dữ liệu đã cho *("Tốt", "Xấu")*.
+
+```{r}
+
+```
+

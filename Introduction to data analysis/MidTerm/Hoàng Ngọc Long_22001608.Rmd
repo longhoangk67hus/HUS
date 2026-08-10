@@ -1,0 +1,185 @@
+---
+title: "Đề thi giữa kỳ I năm học 2023-2024"
+author: "Nguyễn Thị Phương Mai"
+date: "2023-11-21"
+output: html_document
+---
+
+## ĐỀ THI GIỮA KỲ I NĂM HỌC 2023-2024
+
+#### Học phần: Nhập môn phân tích dữ liệu
+
+#### Thời gian thi: 60 phút
+
+
+***Lưu ý: $a$ là 2 chữ số cuối của mã sinh viên.***
+
+**Bài 1.** Đọc và trả lời ngắn gọn các câu hỏi bên dưới: Để điều tra ảnh hưởng của hoàn cảnh kinh tế gia đình tới kết quả học tập của học sinh tiểu học của trường A. Trường A có 1000 học sinh: khối một có 300 em, khối hai có 200 em, khối ba có 100 em, khối bốn có 200 em, khối năm có 200 em. Để điều tra người ta chọn ra 500 em như sau: người ta lấy ra ở khối một 150 em, khối hai 100 em, khối ba 50 em, khối bốn 100 em và khối năm 100 em.
+
+a.  Tổng thể điều tra trong bài trên là gì? (0.5 đ)
+
+Câu trả lời: Tổng thể điều tra trong bài là toàn bộ học sinh tiểu học của trường A, tức là 1000 học sinh.
+
+b.  Tiêu thức thống kê trong bài trên là gì? (0.5đ)
+
+Câu trả lời: Tiêu thức thống kê trong bài là hoàn cảnh kinh tế gia đình và kết quả học tập của học sinh tiểu học.
+
+c.  Dữ liệu trong bài trên thuộc kiểu dữ liệu nào? (0.5đ)
+
+Câu trả lời: Dữ liệu trong bài thuộc kiểu dữ liệu phân loại (categorical data) vì nó liên quan đến các khối học.
+
+d.  Xác định phương pháp chọn mẫu trong bài trên? (0.5đ)
+
+Câu trả lời: Phương pháp chọn mẫu trong bài là mẫu ngẫu nhiên có tỷ lệ, với việc lấy mẫu từ mỗi khối học sao cho tỷ lệ tương ứng với tỷ lệ học sinh trong tổng thể.
+
+**Bài 2**. Sử dụng Rstudio thực hiện các câu hỏi sau:
+
+a.  Tung đồng xu $a$ lần. Mô phỏng phép thử và tìm số lần xuất hiện mặt ngửa. (0.5đ)
+
+```{r}
+so_lan_tung <- 8
+so_lan_mat_ngua <- 0
+for (i in 1:so_lan_tung) {
+  if (mat == 1) {
+    so_lan_mat_ngua <- so_lan_mat_ngua + 1
+  }
+}
+print(paste("Số lần mặt ngửa xuất hiện là:", so_lan_mat_ngua))
+```
+
+b.  Sinh ngẫu nhiên một bộ dữ liệu điểm tổng kết của $70$ sinh viên biết rằng điểm hơn kém nhau $0.5$ đơn vị. (0.5đ)
+
+```{r}
+so_sinh_vien <- 70
+diem <- seq(0, 10, by = 0.5)
+bo_du_lieu <- sample(diem, so_sinh_vien, replace = TRUE)
+print(bo_du_lieu)
+
+```
+
+c. Phân loại dữ liệu điểm tổng kết của $70$ sinh viên như sau và ghép vào dữ liệu điểm ban đầu: (0.5đ)
+
+    |  Điểm tổng kết               |  Phân loại                 |
+    |------------------------------|----------------------------|
+    | $$8<điểm\leq 10$$            |  A                         |
+    | $$6<điểm\leq 8$$             |  B                         |
+    | $$4<điểm\leq 6 $$            |  C                         |
+    | $$0\leq điểm\leq 4$$         |  D                         |
+
+```{r}
+phan_loai_diem <- cut(bo_du_lieu, breaks = c(0, 4, 6, 8, 10), labels = c("D", "C", "B", "A"))
+du_lieu <- data.frame(Diem = bo_du_lieu, PhanLoai = phan_loai_diem)
+print(du_lieu)
+
+```
+
+**Bài 3**. Giả sử rằng, thời gian đi làm của một nhân viên trong vòng 2 tuần (10 ngày) được ghi lại như sau (đơn vị: phút):
+
+$$17 \quad 16 \quad 20\quad  24\quad  22\quad  15\quad  21\quad  15\quad  17\quad  22$$
+
+a. Nhập dữ liệu vào Rstudio và trả về kết quả các lệnh min, mean, max.(0.5đ)
+```{r}
+work_time <- c(17, 16, 20, 24, 22, 15, 21, 15, 17, 22)
+min(work_time)
+max(work_time)
+mean(work_time)
+```
+
+b. Biết rằng giá trị $22$ bị lỗi, nó phải là $a$. Hãy đưa ra câu lệnh để sửa với Rstudio.(0.5đ)
+```{r}
+work_time[which(work_time == 22)] <- 08
+work_time
+```
+
+c. Có bao nhiêu ngày bạn đi làm mất nhiều hơn $20$ phút. Tính tỉ lệ số ngày bạn đi làm mất ít hơn hoặc bằng $17$ phút.(0.5đ)
+```{r}
+sum(work_time > 20)
+sum(work_time <= 17) / length(work_time) * 100
+```
+
+d. Giả sử nhân viên trên ghi chép thêm $5$ ngày như sau: 
+
+$$22,\quad 23,\quad 18, \quad25,\quad 20.$$ 
+Hãy ghép thêm những ghi chép trên vào dữ liệu ban đầu, sau đó tính giá trị trung bình mới và so sánh nó với giá trị trung bình cũ ở ý a (Sử câu lệnh để đưa ra màn hình, ví dụ: “Giá trị trung bình mới lớn hơn là giá trị trung bình cũ”).(0.5đ)
+```{r}
+oldMean = mean(work_time)
+work_time[11:15] = c(22,23,18,25,30)
+newMean = mean(work_time)
+if (oldMean < newMean) {
+  print("Giá trị trung bình mới lớn hơn là giá trị trung bình cũ")
+}
+if (oldMean > newMean) {
+  print("Giá trị trung bình mới nhỏ hơn là giá trị trung bình cũ")
+}
+if (oldMean == newMean) {
+  print("Giá trị trung bình mới bằng  giá trị trung bình cũ")
+}
+```
+
+**Bài 4.** Trong dữ liệu ***data***: 
+
+Height: Chiều cao.
+
+Smoke: Mức độ hút thuốc.
+
+Sex: Giới tính.
+
+Age: Tuổi.
+
+W.Hnd: Tay thuận.
+
+Exer: Cường độ tập thể dục.
+
+Pulse: Nhịp tim.
+
+Sử dụng phần mềm Rstudio để thực hiện các yêu cầu sau:
+
+a. Nhập dữ liệu ***data*** vào Rstudio. (0.5đ)
+```{r}
+data = read.csv("/Users/ngoclong7204/Documents/Workspace/Introduction to data analys/MidTerm/data.csv")
+View(data)
+attach(data)
+```
+
+
+b. Đưa ra dữ liệu về chiều cao của những người không hút thuốc (Never). (1.0đ)
+```{r}
+nonSmokerHeight = data[data$Smoke == "Never",]$Height
+nonSmokerHeight
+```
+
+c. Cho biết chiều cao trung bình của nữ giới thuận tay phải (Right) và in ra màn hình "Chiều cao trung bình của của nữ giới thuận tay phải là ...". (1.0đ)
+```{r}
+averageRight = mean(data[data$Sex == "Female" & data$W.Hnd == "Right",]$Height)
+print(paste("Chieu cao trung binh cua nu la",averageRight))
+```
+d. Viết hàm so sánh nhịp tim trung bình của những người có giới tính Nam (Male) với những người có giới tính Nữ (Female), biết họ có độ tuổi dưới 25 tuổi và có mức độ hút thuốc nặng (Heavy). (1.0đ)
+```{r}
+so_sanh <- function() {
+  people = data[data$Age < 25 & data$Smoke == "Heavy",]
+  female_pulse = mean(people[people$Sex == "Female",]$Pulse)
+  male_pulse = mean(people[people$Sex == "Male",]$Pulse)
+  if (female_pulse > male_pulse) {
+    print("Nhip tim trung binh cua nu cao hon cua nam")
+  }
+  if (female_pulse < male_pulse) {
+    print("Nhip tim trung binh cua nu thap hon cua nam")
+  }
+  if (female_pulse == male_pulse) {
+    print("Nhip tim trung binh cua nu bang cua nam")
+  }
+}
+so_sanh()
+```
+e. Viết hàm cho biết cường độ tập thể dục của người ở độ tuổi dưới 30, không bao giờ hút thuốc (Never), có nhịp tim thấp nhất và cho biết nhịp tim đó bằng bao nhiêu.(1.0đ)
+```{r}
+exercise <- function() {
+  exercise_result = data[data$Age < 30 & data$Smoke == "Never",]
+  min_pulse = min(exercise_result$Pulse)
+  result_exercise = exercise_result[exercise_result$Pulse == min_pulse,]$Exer
+  print(paste("cuong do tap the duc cua nguoi tuoi 30 la",result_exercise))
+  print(paste("nhip tim do bang",min_pulse))
+}
+exercise()
+ 
+```
